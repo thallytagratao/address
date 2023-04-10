@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,10 +10,13 @@
     
 </head>
 <body>
-    <div>
-        <input type="text" placeholder="CEP sem o -" id="cep">
-        <button id="btn" onclick="handleClick()">Procurar</button>
-        <div id="result"></div>
+    <div class="container">
+        <div class="box">
+            <input type="text" placeholder="CEP sem o -" id="cep">
+            <button onclick="handleClick()">Procurar</button>
+        </div>
+        <div id="loader" style="display: none;"></div>
+        <div class="box answer" id="result"></div>
     </div>
 
 </body>

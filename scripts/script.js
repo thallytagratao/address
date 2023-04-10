@@ -1,18 +1,29 @@
 function handleClick(){
+    const resultElement = document.querySelector('#result')
+    resultElement.innerHTML = ""
+
     const cep = document.querySelector('#cep').value
     if(cep == ""){
         alert('Preencha o campo de CEP!')
         return                     
     }
-    fetch(`https://viacep.com.br/ws/${cep}/json/`, {
-method:'GET'})
-.then(response => response.json())  
-.then(data =>{
+    document.getElementById("loader").style.display = "block"
 
-    const resultElement = document.querySelector('#result')
-    const dataFormatted = (`${data.logradouro}, ${data.complemento}, ${data.bairro}. ${data.localidade} - ${data.uf}`)
-    resultElement.innerHTML = dataFormatted
-})           
+
+    setTimeout(() => {
+        
+        fetch(`https://viacep.com.br/ws/${cep}/json/`, {
+    method:'GET'})
+    .then(response => response.json())  
+    .then(data =>{
+    
+        const dataFormatted = (`${data.logradouro}, ${data.bairro}. ${data.localidade} - ${data.uf}`)
+        document.getElementById("loader").style.display = "none"
+        resultElement.innerHTML = dataFormatted
+    })           
+
+    }, 2000);
+
 }
 
 //Evento feito para quando clicar no enter, rodar a função
